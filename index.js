@@ -7,7 +7,11 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const Room = require("./models/Room");
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://collab-code-frontend-alpha.vercel.app",
+  methods: ["GET", "POST"],
+  credentials: true,
+}));
 app.use(express.json());
 require("dotenv").config();
 const connectDB = async () => {
